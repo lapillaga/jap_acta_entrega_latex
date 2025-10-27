@@ -1,69 +1,69 @@
-\newcommand{\UTPLmotto}[1]{%
-  {\bellmt\fontsize{16}{19.2}\itshape #1}%
-}
+% Variables del documento
+\newcommand{\JuntaOrganizacion}{Junta Administradora de Agua Potable y Saneamiento de Jerusalén}
+\newcommand{\JuntaTitulo}{Dossier de Cierre}
+\newcommand{\JuntaSubtitulo}{Entrega -- Recepción de Directiva}
+\newcommand{\JuntaPeriodo}{Octubre 2023 -- Octubre 2025}
 
-\newcommand{\UTPLfaculty}{FACULTAD DE INGENIERÍAS Y ARQUITECTURA}
-\newcommand{\UTPLdegree}{MAESTRÍA EN INTELIGENCIA ARTIFICIAL APLICADA}
-\newcommand{\UTPLtitle}{Desarrollo de un prototipo móvil para la lectura de medidores de agua
-potable usando técnicas de procesamiento de imágenes}
+\newcommand{\JuntaPresidentaSaliente}{Sra. María Justa Jerez Tenecela}
+\newcommand{\JuntaPresidenteEntrante}{Dr. Gonzalo Castro Jerez}
 
-\newcommand{\UTPLauthor}{Pillaga Zhagñay, Luis Antonio}
-\newcommand{\UTPLadvisor}{Riofrio Calderón, Guido Eduardo}
-
-\newcommand{\UTPLcity}{LOJA}
-\newcommand{\UTPLyear}{2025}
+\newcommand{\JuntaLugar}{Jerusalén, Cañar}
+\newcommand{\JuntaFechaEntrega}{31 de octubre de 2025}
 
 
 \begin{titlepage}
   \centering
 
   % --- Logotipo ---
-  \includegraphics[width=3.5cm]{figures/logo}
-  \vspace{1.5cm}
-
-  % --- Nombre de la universidad ---
-  {\fontsize{18}{21.6}\bfseries\MakeUppercase{Universidad Técnica Particular de Loja}}
-
-  % --- Lema ---
-  \UTPLmotto{La Universidad Católica de Loja}
-
+  \includegraphics[width=4cm]{figures/logo}
   \vspace{1cm}
 
-  % --- Facultad y programa ---
-  {\fontsize{18}{21.6}\bfseries\MakeUppercase{\UTPLfaculty}}
-  
+  % --- Nombre de la organización ---
+  {\fontsize{18}{21.6}\bfseries\MakeUppercase{\JuntaOrganizacion}}
+
+  \vspace{2cm}
+
+  % --- Título del documento ---
+  {\fontsize{20}{24}\bfseries\MakeUppercase{\JuntaTitulo}}
+
   \vspace{0.5cm}
 
-  {\fontsize{16}{19.2}\bfseries\MakeUppercase{\UTPLdegree}}
+  {\fontsize{16}{19.2}\bfseries \JuntaSubtitulo}
 
   \vspace{1cm}
 
-  % --- Título de tesis ---
-  {\fontsize{16}{19.2}\bfseries \UTPLtitle}
+  {\fontsize{14}{16.8}\selectfont Período de Gestión:}
 
-  \vspace{1cm}
+  {\fontsize{14}{16.8}\bfseries \JuntaPeriodo}
 
-  Trabajo de titulación previo a la obtención del título de:
+  \vspace{3cm}
 
-  \vspace{1cm}
-
-  {\fontsize{16}{19.2}\bfseries\MakeUppercase{Magíster en Inteligencia Artificial Aplicada}}
-
-  \vspace{1cm}
-
-  % --- Autor y director (tabla sin líneas) ---
+  % --- Responsables de entrega y recepción ---
   \raggedright
-  {\fontsize{12}{24}\selectfont\bfseries Autor:}
-  {\fontsize{12}{24}\selectfont \UTPLauthor}
+  \hspace{2.5cm}
+  \begin{minipage}{0.7\textwidth}
+    {\fontsize{12}{14.4}\selectfont\bfseries Presidenta Saliente:}
 
-  {\fontsize{12}{24}\selectfont\bfseries Director:}
-  {\fontsize{12}{24}\selectfont \UTPLadvisor}
+    \vspace{0.3cm}
+
+    {\fontsize{12}{14.4}\selectfont \JuntaPresidentaSaliente}
+
+    \vspace{0.8cm}
+
+    {\fontsize{12}{14.4}\selectfont\bfseries Presidente Entrante:}
+
+    \vspace{0.3cm}
+
+    {\fontsize{12}{14.4}\selectfont \JuntaPresidenteEntrante}
+  \end{minipage}
 
   \centering
 
   \vfill
 
-  % --- Ciudad y año ---
-  {\fontsize{12}{14.4}\MakeUppercase{\UTPLcity}\par}
-  {\fontsize{12}{14.4}\UTPLyear}
+  % --- Lugar y fecha ---
+  {\fontsize{12}{14.4}\selectfont \JuntaLugar}
+
+  {\fontsize{12}{14.4}\selectfont \JuntaFechaEntrega}
+
 \end{titlepage}
