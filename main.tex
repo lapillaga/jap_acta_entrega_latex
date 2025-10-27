@@ -1,0 +1,217 @@
+\documentclass[11pt,a4paper]{report}
+
+% Paquetes necesarios
+
+% Configuración de fuente Arial 11pt
+% Para usar Arial real, compila con XeLaTeX en lugar de pdfLaTeX
+\usepackage{fontspec}
+\setmainfont{Arial}
+
+\newfontfamily\bellmt{Bell MT}[
+  ItalicFont = {Bell MT Italic},
+]
+
+\usepackage[spanish,es-tabla]{babel}
+\usepackage[margin=2.54cm]{geometry} % Márgenes de 2.54cm
+\usepackage{tabularx} % Tablas con ancho ajustable
+\usepackage{setspace} % Control de interlineado
+\usepackage{graphicx} % Para incluir imágenes
+\usepackage{fancyhdr} % Para encabezados y pies de página
+\usepackage{titlesec} % Para formato de títulos
+\usepackage{tocloft} % Para personalizar índices
+\usepackage{indentfirst} % Sangría en primer párrafo
+\usepackage{hyperref} % Enlaces en el PDF
+\usepackage{longtable} 
+
+% Configuración de hyperref para eliminar bordes rojos
+\hypersetup{
+    hidelinks
+}
+\usepackage{float} % Para posicionamiento de figuras
+\usepackage{caption} % Para personalizar captions
+\usepackage{subcaption} % Para subfiguras
+\usepackage{array} % Para tablas
+\usepackage{booktabs} % Para tablas profesionales
+\usepackage{multirow} % Para celdas multirow en tablas
+\usepackage{amsmath} % Para matemáticas
+\usepackage{csquotes} % Para citas
+\usepackage[style=apa,backend=biber]{biblatex} % Para bibliografía APA 7
+\usepackage{appendix} % Para apéndices
+
+% Configuración de bibliografía
+\addbibresource{references.bib}
+
+% Configuración de interlineado
+\doublespacing % Interlineado doble
+
+% Configuración de sangría
+\setlength{\parindent}{1.27cm} % Sangría de primera línea
+
+% Configuración de espaciado entre párrafos
+\setlength{\parskip}{0pt} % Sin espacio extra entre párrafos
+
+% Configuración de numeración de páginas
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\thepage} % Número de página en esquina superior derecha
+\renewcommand{\headrulewidth}{0pt} % Sin línea en encabezado
+
+% Forzar el estilo fancy en todas las páginas
+\fancypagestyle{plain}{%
+  \fancyhf{}
+  \fancyhead[R]{\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+}
+
+% Configuración de formato de títulos según FORMAT.md
+% Definir números de capítulos en palabras
+\makeatletter
+\newcommand{\chapterwordnumber}{%
+  \ifcase\value{chapter}%
+    \or uno%
+    \or dos%
+    \or tres%
+    \or cuatro%
+    \or cinco%
+    \or seis%
+    \or siete%
+    \or ocho%
+    \or nueve%
+    \or diez%
+  \fi%
+}
+\makeatother
+
+% Nivel 1: Bold, 11pt, Arial, centrado, con "CAPÍTULO [NÚMERO]" en línea separada
+\titleformat{\chapter}[display]
+{\normalfont\bfseries\centering\fontsize{11}{13.2}\selectfont}
+{Capítulo \chapterwordnumber}
+{11pt}{}
+\titlespacing*{\chapter}{0pt}{-30pt}{20pt}
+
+% Nivel 2: Bold, 11pt, izquierda, con numeración
+\titleformat{\section}
+{\normalfont\bfseries\raggedright}{\thesection\quad}{0pt}{}
+\titlespacing*{\section}{0pt}{0pt}{0pt}
+
+% Nivel 3: Bold Italic, 11pt, izquierda, con numeración
+\titleformat{\subsection}
+{\normalfont\bfseries\itshape\raggedright}{\thesubsection\quad}{0pt}{}
+\titlespacing*{\subsection}{0pt}{0pt}{0pt}
+
+% Nivel 4: Bold, sangría 1.27cm, inline con punto
+\titleformat{\subsubsection}[runin]
+{\normalfont\bfseries}{}{0pt}{}[.]
+\titlespacing*{\subsubsection}{\parindent}{0pt}{1em}
+
+% Nivel 5: Bold Italic, sangría 1.27cm, inline con punto
+\titleformat{\paragraph}[runin]
+{\normalfont\bfseries\itshape}{}{0pt}{}[.]
+\titlespacing*{\paragraph}{\parindent}{0pt}{1em}
+
+% Configuración de captions para tablas y figuras (Arial 10pt exacto)
+\DeclareCaptionFont{arial10}{\fontsize{10}{12}\selectfont}
+\captionsetup{
+    font={arial10,doublespacing},
+    labelfont=bf,
+    textfont=it,
+    justification=centering,
+    singlelinecheck=false
+}
+
+% Configuración de índices
+\addto\captionsspanish{%
+  \renewcommand{\contentsname}{Índice de contenido}%
+  \renewcommand{\listtablename}{Índice de tablas}%
+  \renewcommand{\listfigurename}{Índice de figuras}%
+}
+
+% Configuración del formato del título del índice
+\makeatletter
+\renewcommand\tableofcontents{%
+    \chapter*{\centering\normalfont\bfseries\fontsize{11}{13.2}\selectfont\contentsname}%
+    \@mkboth{\MakeUppercase\contentsname}{\MakeUppercase\contentsname}%
+    \@starttoc{toc}%
+}
+
+% Configuración usando tocloft para los títulos de los índices
+% Centrado perfecto, negrita, 11pt
+\renewcommand{\cfttoctitlefont}{\hfill\normalfont\bfseries\fontsize{11}{13.2}\selectfont}
+\renewcommand{\cftaftertoctitle}{\hfill\mbox{}}
+\renewcommand{\cftlottitlefont}{\hfill\normalfont\bfseries\fontsize{11}{13.2}\selectfont}
+\renewcommand{\cftafterlottitle}{\hfill\mbox{}}
+\renewcommand{\cftloftitlefont}{\hfill\normalfont\bfseries\fontsize{11}{13.2}\selectfont}
+\renewcommand{\cftafterloftitle}{\hfill\mbox{}}
+
+% Eliminar el espacio vertical antes de los títulos de los índices
+\setlength{\cftbeforetoctitleskip}{-30pt}
+\setlength{\cftaftertoctitleskip}{20pt}
+\setlength{\cftbeforelottitleskip}{-30pt}
+\setlength{\cftafterlottitleskip}{20pt}
+\setlength{\cftbeforeloftitleskip}{-30pt}
+\setlength{\cftafterloftitleskip}{20pt}
+
+\makeatother
+
+% Configuración de puntitos (leaders) para todos los niveles
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
+\setlength{\cftbeforechapskip}{0pt}
+
+% Reducir la separación entre los puntos (valor por defecto es 4.5)
+\renewcommand{\cftdotsep}{0}
+
+% Comando para páginas sin numeración pero contadas
+\newcommand{\unnumberedpage}{%
+    \thispagestyle{empty}
+    \addtocounter{page}{1}
+}
+
+% Comando para eliminar sangría (para secciones preliminares)
+\newcommand{\noindentpages}{%
+    \setlength{\parindent}{0pt}
+}
+
+% Comando para restaurar sangría (desde Introducción)
+\newcommand{\restoreindent}{%
+    \setlength{\parindent}{1.27cm}
+}
+
+% Documento principal
+\begin{document}
+
+% Carátula (sin numerar)
+\thispagestyle{empty}
+\input{cover}
+\clearpage
+
+% Páginas preliminares con números romanos en mayúsculas (sin sangría)
+\pagenumbering{Roman}
+\setcounter{page}{1}
+\noindentpages
+
+% Índice de contenido
+\tableofcontents
+\clearpage
+
+% Índice de tablas
+\listoftables
+\clearpage
+
+% Índice de figuras
+\listoffigures
+\clearpage
+
+% Cambio a números arábigos desde el resumen (sin sangría aún)
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+% Secciones
+\input{sections/01_informe_gestion}
+\clearpage
+
+% Referencias
+\printbibliography[heading=bibintoc,title={Referencias}]
+\clearpage
+
+
+\end{document}

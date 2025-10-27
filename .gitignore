@@ -1,0 +1,9 @@
+# Add build folder but keep main.pdf
+/build/*
+!/build/main.pdf
+formatoTT.docx
+
+# Ignore .DS_Store files in all directories
+**/.DS_Store
+.DS_Store
+.idea/**
